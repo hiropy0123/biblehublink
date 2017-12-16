@@ -1,7 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11134"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -673,7 +674,7 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModuleProvider="target"/>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="biblehubLink" customModuleProvider="target"/>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -688,7 +689,7 @@
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
-			<connections>
+                        <connections>
                             <outlet property="delegate" destination="B8D-0N-5wS" id="98r-iN-zZc"/>
                         </connections>
                     </window>
@@ -703,15 +704,112 @@
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="biblehubLink" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="139"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AMj-LX-D64">
+                                <rect key="frame" x="360" y="52" width="58" height="32"/>
+                                <buttonCell key="cell" type="push" title="Go" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="qyC-1G-Q5O">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="pushGo:" target="XfG-lQ-9wD" id="eWv-Yp-THA"/>
+                                </connections>
+                            </button>
+                            <popUpButton verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q7E-Y9-j2O">
+                                <rect key="frame" x="67" y="56" width="134" height="26"/>
+                                <popUpButtonCell key="cell" type="push" title="書簡を選択" alternateTitle="選択" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="border" allowsMixedState="YES" imageScaling="proportionallyDown" inset="2" selectedItem="p8L-LC-zIk" id="1cI-WI-gcE">
+                                    <behavior key="behavior" lightByContents="YES"/>
+                                    <font key="font" metaFont="menu"/>
+                                    <menu key="menu" id="RGe-G4-8uG">
+                                        <items>
+                                            <menuItem title="書簡を選択" state="on" id="p8L-LC-zIk"/>
+                                            <menuItem title="Item 2" id="UZi-Mf-gfw"/>
+                                            <menuItem title="Item 3" id="K4a-L5-LqG"/>
+                                        </items>
+                                    </menu>
+                                </popUpButtonCell>
+                                <connections>
+                                    <binding destination="3jY-VB-bXx" name="content" keyPath="values" id="KTK-AZ-JEx"/>
+                                </connections>
+                            </popUpButton>
+                            <textField verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k3x-Gy-EIs" userLabel="chapter">
+                                <rect key="frame" x="206" y="59" width="43" height="22"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="1" drawsBackground="YES" id="N9Q-Kj-tDX">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Wh-9J-jwB" userLabel="verse">
+                                <rect key="frame" x="283" y="59" width="43" height="22"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="1" drawsBackground="YES" id="40o-wL-Pmm">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i3a-Sf-sqU">
+                                <rect key="frame" x="253" y="59" width="17" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="章" id="OuP-VZ-CWJ">
+                                    <font key="font" size="13" name=".HiraKakuInterface-W3"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ULR-y6-I9D">
+                                <rect key="frame" x="332" y="59" width="17" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="節" id="dz2-ck-Nbm">
+                                    <font key="font" size="13" name=".HiraKakuInterface-W3"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QjP-nb-zUk">
+                                <rect key="frame" x="0.0" y="84" width="480" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="bh14" id="9kz-K2-3Od"/>
+                            </imageView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="1Wh-9J-jwB" secondAttribute="bottom" constant="20" symbolic="YES" id="16s-IH-sl6"/>
+                            <constraint firstItem="k3x-Gy-EIs" firstAttribute="leading" secondItem="q7E-Y9-j2O" secondAttribute="trailing" constant="8" id="4yQ-Kp-QWd"/>
+                            <constraint firstAttribute="bottom" secondItem="q7E-Y9-j2O" secondAttribute="bottom" constant="20" symbolic="YES" id="9Re-yf-urg"/>
+                            <constraint firstItem="i3a-Sf-sqU" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="102" id="HER-0w-uah"/>
+                            <constraint firstItem="i3a-Sf-sqU" firstAttribute="leading" secondItem="k3x-Gy-EIs" secondAttribute="trailing" constant="6" id="Oaa-W1-iAM"/>
+                            <constraint firstItem="AMj-LX-D64" firstAttribute="leading" secondItem="ULR-y6-I9D" secondAttribute="trailing" constant="19" id="Op5-c8-dqK"/>
+                            <constraint firstItem="k3x-Gy-EIs" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="97" id="ReU-LR-fjs"/>
+                            <constraint firstAttribute="bottom" secondItem="i3a-Sf-sqU" secondAttribute="bottom" constant="20" symbolic="YES" id="SJI-ag-vbe"/>
+                            <constraint firstItem="ULR-y6-I9D" firstAttribute="leading" secondItem="1Wh-9J-jwB" secondAttribute="trailing" constant="8" id="TGL-Zx-Mhw"/>
+                            <constraint firstItem="1Wh-9J-jwB" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="97" id="Ywp-Ab-cMt"/>
+                            <constraint firstItem="q7E-Y9-j2O" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="98" id="dIO-qF-Xbi"/>
+                            <constraint firstItem="1Wh-9J-jwB" firstAttribute="leading" secondItem="i3a-Sf-sqU" secondAttribute="trailing" constant="15" id="faP-0j-Sjj"/>
+                            <constraint firstAttribute="trailing" secondItem="AMj-LX-D64" secondAttribute="trailing" constant="97" id="h8d-dw-Fzt"/>
+                            <constraint firstAttribute="bottom" secondItem="ULR-y6-I9D" secondAttribute="bottom" constant="20" symbolic="YES" id="icv-Oa-HOq"/>
+                            <constraint firstItem="q7E-Y9-j2O" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="98" id="klL-YB-hdw"/>
+                            <constraint firstAttribute="bottom" secondItem="AMj-LX-D64" secondAttribute="bottom" constant="20" symbolic="YES" id="luH-VS-lwl"/>
+                            <constraint firstAttribute="bottom" secondItem="k3x-Gy-EIs" secondAttribute="bottom" constant="20" symbolic="YES" id="oqq-M6-aoX"/>
+                            <constraint firstItem="AMj-LX-D64" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="98" id="pR4-bB-hMy"/>
+                            <constraint firstItem="ULR-y6-I9D" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="102" id="rtk-6S-ZfQ"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="bookSelect" destination="q7E-Y9-j2O" id="rhN-zL-n8P"/>
+                        <outlet property="chapter" destination="k3x-Gy-EIs" id="mO9-Ar-Yec"/>
+                        <outlet property="logoImage" destination="QjP-nb-zUk" id="gSb-ne-5y0"/>
+                        <outlet property="verse" destination="1Wh-9J-jwB" id="JG2-tD-fiu"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <userDefaultsController representsSharedInstance="YES" id="3jY-VB-bXx"/>
             </objects>
-            <point key="canvasLocation" x="75" y="655"/>
+            <point key="canvasLocation" x="75" y="654.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="bh14" width="130" height="37"/>
+    </resources>
 </document>
